@@ -12,5 +12,11 @@
 // TODO: add headers that you want to pre-compile here
 #include <vtkAutoInit.h>
 VTK_MODULE_INIT(vtkRenderingOpenGL2);
+VTK_MODULE_INIT(vtkInteractionStyle);
+#include <vtkRenderWindow.h>
+#include <vtkRenderer.h>
+#include <vtkRenderWindowInteractor.h>
+#include <vtkInteractorStyleTrackballCamera.h>
+#include "SlidingAverageFilter.h"
 
 #endif //PCH_H
