@@ -130,8 +130,6 @@ void Tube::GenerateTube(double radius, int res)
 	m_GlyphActor->GetProperty()->SetColor(1.0, 0.0, 0.0);
 }
 
-
-
 Merger::Merger()
 {
 	m_BooleanFilter = vtkPolyDataBooleanFilter::New();

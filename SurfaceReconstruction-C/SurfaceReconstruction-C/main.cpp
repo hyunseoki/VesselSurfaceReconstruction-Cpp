@@ -1,9 +1,6 @@
 #include "pch.h"
 
 #include "ObjectManager.h"
-#include "CsvManager.h"
-
-#include <iostream>
 
 int main()
 {
