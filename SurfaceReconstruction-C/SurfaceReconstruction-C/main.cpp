@@ -17,13 +17,19 @@ int main()
 	merger.Merge();
 
 	vtkRenderer *ren = vtkRenderer::New(); 
+	//ren->AddActor(tube1.GetTubeActor());
+
+#ifdef DEBUG
 	ren->AddActor(tube1.GetGlyphActor());
 	ren->AddActor(tube1.GetLineActor());
-	ren->AddActor(tube1.GetTubeActor());
+#endif
 
+	//ren->AddActor(tube2.GetTubeActor());
+
+#ifdef DEBUG
 	ren->AddActor(tube2.GetGlyphActor());
 	ren->AddActor(tube2.GetLineActor());
-	ren->AddActor(tube2.GetTubeActor());
+#endif
 
 	ren->AddActor(merger.GetMergerActor());
 

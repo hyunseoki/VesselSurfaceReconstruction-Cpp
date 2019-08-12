@@ -9,6 +9,7 @@ Tube::Tube()
 {
 	m_Points = vtkSmartPointer<vtkPoints>::New();
 	m_Connectivity = vtkSmartPointer<vtkCellArray>::New();
+	m_Radius = vtkSmartPointer<vtkDoubleArray>::New();
 	m_Line = vtkSmartPointer<vtkLine>::New();
 	m_PolyData = vtkSmartPointer<vtkPolyData>::New();
 
@@ -16,6 +17,7 @@ Tube::Tube()
 	m_TubeMapper = vtkPolyDataMapper::New();
 	m_TubeActor = vtkSmartPointer<vtkActor>::New();
 
+#ifdef DEBUG
 	m_LineMapper = vtkPolyDataMapper::New();
 	m_LineActor = vtkSmartPointer<vtkActor>::New();
 
@@ -23,6 +25,7 @@ Tube::Tube()
 	m_Glyph = vtkSmartPointer<vtkGlyph3D>::New();
 	m_GlyphMapper = vtkPolyDataMapper::New();
 	m_GlyphActor = vtkSmartPointer<vtkActor>::New();
+#endif
 }
 
 Tube::~Tube()
@@ -91,19 +94,20 @@ void Tube::InsertPointsFromFile(const char * filename)
 
 void Tube::InsertPoints(const vector<vector<double>>& points)
 {
-	int pointNb = (int)(points.size());
+	size_t pointNb = points.size();
 
 	m_Points->SetNumberOfPoints(pointNb);
 	m_Connectivity->InsertNextCell(pointNb);
+	//m_Radius->SetNumberOfTuples(pointNb);
 
-	for (int i = 0; i < pointNb; i++)
+	for (size_t i = 0; i < pointNb; i++)
 	{
 		m_Points->InsertPoint(i, points[i][0], points[i][1], points[i][2]);
 		m_Connectivity->InsertCellPoint(i);
 	}
 }
 
-void Tube::GenerateTube(double radius, int res)
+void Tube::GenerateTube(double radius, size_t res)
 {
 	// TODO: Add your implementation code here.
 	m_PolyData->SetPoints(m_Points);
@@ -117,6 +121,7 @@ void Tube::GenerateTube(double radius, int res)
 	m_TubeActor->SetMapper(m_TubeMapper);
 	m_TubeActor->GetProperty()->SetOpacity(0.5);
 
+#ifdef DEBUG
 	m_LineMapper->SetInputData(m_PolyData);
 	m_LineActor->SetMapper(m_LineMapper);
 	m_LineActor->GetProperty()->SetColor(0.0, 1.0, 0.0);
@@ -128,6 +133,7 @@ void Tube::GenerateTube(double radius, int res)
 	m_GlyphMapper->SetInputConnection(m_Glyph->GetOutputPort());
 	m_GlyphActor->SetMapper(m_GlyphMapper);
 	m_GlyphActor->GetProperty()->SetColor(1.0, 0.0, 0.0);
+#endif
 }
 
 Merger::Merger()

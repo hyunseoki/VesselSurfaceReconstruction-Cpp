@@ -3,11 +3,11 @@
 
 vector<vector<double>> SlidingAverageFilter::SlidingAverageFilter(vector<vector<double>>& points)
 {
-	int length = (int) points.size();
+	size_t length = points.size();
 	vector<vector<double>> result;
 	vector<double> point(3, 0.0);
 
-	int i = 0;
+	size_t i = 0;
 	result.push_back(points[i]);
 
 	for (i = 1; i < length-1; i++)
@@ -50,12 +50,12 @@ vector<vector<double>> SlidingAverageFilter::SlidingAverageFilterSub(vector<vect
 
 double SlidingAverageFilter::calDiff(vector<vector<double>>& points1, vector<vector<double>>& points2)
 {
-	int length = (int) points1.size();
+	size_t length = points1.size();
 	vector<double> xDiff(length, 0.0);
 	vector<double> yDiff(length, 0.0);
 	vector<double> zDiff(length, 0.0);
 
-	for (int i = 0; i < length; i++)
+	for (size_t i = 0; i < length; i++)
 	{
 		xDiff[i] = abs(points1[i][0] - points2[i][0]);
 		yDiff[i] = abs(points1[i][1] - points2[i][1]);

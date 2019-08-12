@@ -5,6 +5,7 @@
 #include <vtkSphereSource.h>
 #include <vtkGlyph3D.h>
 
+#include <vtkDoubleArray.h>
 #include <vtkCellArray.h>
 
 #include <vtkSmartPointer.h>
@@ -36,7 +37,7 @@ private:
 public:
 	void InsertPointsFromFile(const char * filename);
 	void InsertPoints(const vector<vector<double>> &points);
-	void GenerateTube(double radius = 1.5, int res = 16);
+	void GenerateTube(double radius = 1.5, size_t res = 16);
 
 	inline vtkSmartPointer<vtkTubeFilter> GetTubeFilter() { return m_TubeFilter; }
 	inline vtkSmartPointer<vtkActor> GetTubeActor() { return m_TubeActor; }
@@ -47,6 +48,7 @@ private:
 	// Basic members
 	vtkSmartPointer<vtkPoints> m_Points;
 	vtkSmartPointer<vtkCellArray> m_Connectivity;
+	vtkSmartPointer<vtkDoubleArray> m_Radius;
 	vtkSmartPointer<vtkLine> m_Line;
 	vtkSmartPointer<vtkPolyData> m_PolyData;
 
