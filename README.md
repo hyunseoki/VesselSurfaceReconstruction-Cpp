@@ -10,3 +10,5 @@ Romer's codes :  https://github.com/zippy84/vtkbool
 You may need to build Romer's vtk add-on libary
 
 At now, it seems that vtk employ Romer's function as their basic function. You may check it and can use newly released vtk version
+
+You can ask me hyunseoki@kaist.ac.kr
