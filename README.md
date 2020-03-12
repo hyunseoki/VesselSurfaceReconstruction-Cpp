@@ -1,4 +1,4 @@
-# Vessel_Surface_Reconstruction-Cpp
+# VesselSurfaceReconstruction-Cpp
 Blood vessel surface reconstruction from vessel center skeleton using VTK
 
 During this project, I found that VTK boolean function is unstable and decided to employ Romer's vtkBooleanOperation function instead of vtk's one 
